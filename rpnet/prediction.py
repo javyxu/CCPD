@@ -257,10 +257,7 @@ class fh02(nn.Module):
 
 
 def isEqual(labelGT, labelP):
-    print (labelGT)
-    print (labelP)
     compare = [1 if int(labelGT[i]) == int(labelP[i]) else 0 for i in range(7)]
-    # print(sum(compare))
     return sum(compare)
 
 
