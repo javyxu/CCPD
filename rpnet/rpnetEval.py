@@ -1,5 +1,7 @@
-#encoding:utf-8
-import cv2
+# -*- coding: utf-8 -*-
+# pylint: disable=C,R,W
+
+
 import torch
 from torch.autograd import Variable
 import torch.nn as nn
@@ -9,7 +11,6 @@ from os import path, mkdir
 from load_data import *
 from time import time
 from roi_pooling import roi_pooling_ims
-from shutil import copyfile
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--input", required=True,

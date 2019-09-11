@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# pylint: disable=C,R,W
+
+
 # Code in cnn_fn_pytorch.py
 from __future__ import print_function, division
 import cv2
@@ -27,7 +31,7 @@ ap.add_argument("-w", "--writeFile", default='wR2.out',
 args = vars(ap.parse_args())
 
 use_gpu = torch.cuda.is_available()
-print (use_gpu)
+print(use_gpu)
 
 numClasses = 4
 imgSize = (480, 480)
@@ -46,9 +50,9 @@ with open(args['writeFile'], 'wb') as outF:
 def get_n_params(model):
     pp=0
     for p in list(model.parameters()):
-        nn=1
+        nn = 1
         for s in list(p.size()):
-            nn = nn*s
+            nn = nn * s
         pp += nn
     return pp
 
@@ -158,9 +162,9 @@ resume_file = str(args["resume"])
 if not resume_file == '111':
     # epoch_start = int(resume_file[resume_file.find('pth') + 3:]) + 1
     if not os.path.isfile(resume_file):
-        print ("fail to load existed model! Existing ...")
+        print("fail to load existed model! Existing ...")
         exit(0)
-    print ("Load existed model! %s" % resume_file)
+    print("Load existed model! %s" % resume_file)
     model_conv = wR2(numClasses)
     model_conv = torch.nn.DataParallel(model_conv, device_ids=range(torch.cuda.device_count()))
     model_conv.load_state_dict(torch.load(resume_file))

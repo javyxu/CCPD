@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# pylint: disable=C,R,W
+
+
 import torch
 import torch.autograd as ag
 from torch.autograd.function import Function

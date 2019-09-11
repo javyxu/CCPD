@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
+# pylint: disable=C,R,W
+
+
 # Compared to fh0.py
 # fh02.py remove the redundant ims in model input
-from __future__ import print_function, division
-import cv2
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -36,7 +39,7 @@ args = vars(ap.parse_args())
 
 wR2Path = './wR2/wR2.pth2'
 use_gpu = torch.cuda.is_available()
-print (use_gpu)
+print(use_gpu)
 
 numClasses = 7
 numPoints = 4
@@ -64,7 +67,7 @@ def get_n_params(model):
     for p in list(model.parameters()):
         nn=1
         for s in list(p.size()):
-            nn = nn*s
+            nn = nn * s
         pp += nn
     return pp
 
@@ -283,9 +286,9 @@ resume_file = str(args["resume"])
 if not resume_file == '111':
     # epoch_start = int(resume_file[resume_file.find('pth') + 3:]) + 1
     if not os.path.isfile(resume_file):
-        print ("fail to load existed model! Existing ...")
+        print("fail to load existed model! Existing ...")
         exit(0)
-    print ("Load existed model! %s" % resume_file)
+    print("Load existed model! %s" % resume_file)
     model_conv = fh02(numPoints, numClasses)
     model_conv = torch.nn.DataParallel(model_conv, device_ids=range(torch.cuda.device_count()))
     model_conv.load_state_dict(torch.load(resume_file))
@@ -393,7 +396,7 @@ def train_model(model, criterion, optimizer, num_epochs=25):
                 with open(args['writeFile'], 'a') as outF:
                     outF.write('train %s images, use %s seconds, loss %s\n' % (i*batchSize, time() - start, sum(lossAver) / len(lossAver) if len(lossAver)>0 else 'NoLoss'))
                 torch.save(model.state_dict(), storeName)
-        print ('%s %s %s\n' % (epoch, sum(lossAver) / len(lossAver), time()-start))
+        print('%s %s %s\n' % (epoch, sum(lossAver) / len(lossAver), time()-start))
         model.eval()
         count, correct, error, precision, avgTime = eval(model, testDirs)
         with open(args['writeFile'], 'a') as outF:

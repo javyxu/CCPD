@@ -45,7 +45,7 @@ Demo code and several images are provided under rpnet/ folder, after you obtain 
 
 ```
 
-  python demo.py -i [ROOT/rpnet/demo/] -m [***/fh02.pth]
+  python prediction.py -i [ROOT/rpnet/demo/] -m [***/fh02.pth]
 
 ```
 

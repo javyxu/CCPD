@@ -1,0 +1,10 @@
+.vscode
+*.pyc
+*.so
+*.pth
+*.egg-info
+__pycache__
+.DS_Store
+.DS_Store?
+build
+dist

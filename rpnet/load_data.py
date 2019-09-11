@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# pylint: disable=C,R,W
+
+
 from torch.utils.data import *
 from imutils import paths
 import cv2
